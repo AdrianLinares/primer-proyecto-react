@@ -6,12 +6,8 @@ export const AgregarTarea = ({ agregarTarea }) => {
         setImputValue(event.target.value);
     };
     const onSubmit = (event) => {
-        const envio = {
-            nombre: inputValue,
-            visto: false,
-        };
         event.preventDefault();
-        agregarTarea((tareas) => [...tareas, envio]);
+        agregarTarea(inputValue);
     };
     return (
         <form onSubmit={onSubmit}>
@@ -19,7 +15,7 @@ export const AgregarTarea = ({ agregarTarea }) => {
                 type="text"
                 placeholder="Ingresa tarea nueva"
                 value={inputValue}
-                onChange={onInputChange} // onChange={(event) => onInputChange(event)} usar mcuando hay más de mun argumento
+                onChange={onInputChange} // onChange={(event) => onInputChange(event)} = usar mcuando hay más de un argumento
             />
         </form>
     );
