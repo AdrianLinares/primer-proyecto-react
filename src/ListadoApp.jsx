@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { AgregarTarea } from "./components/AgregarTarea";
 
 const Items = ({ nombre, visto }) => {
     return (
-        <li>
+        <li className="rojito">
             {nombre}
             {visto ? "✅" : "⛔"} {/* {visto && "✅"} */}
         </li>
@@ -11,9 +12,6 @@ const Items = ({ nombre, visto }) => {
 };
 
 export const ListadoApp = () => {
-    const addTask = () => {
-        setArreglo([...arreglo, { nombre: "Nuevo tema", visto: false }]);
-    };
     let listadoSecciones = [
         { nombre: "Instalaciones necesarias", visto: true },
         { nombre: "Uso de Vite", visto: true },
@@ -29,6 +27,7 @@ export const ListadoApp = () => {
     return (
         <>
             <h1>Listado de Temas del Curso</h1>
+            <AgregarTarea agregarTarea={setArreglo}></AgregarTarea>
             <ol>
                 {arreglo.map((item) => (
                     <Items
@@ -38,7 +37,6 @@ export const ListadoApp = () => {
                     ></Items>
                 ))}
             </ol>
-            <button onClick={() => addTask()}>Agregar Tarea</button>
         </>
     );
 };
